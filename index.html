@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="th">
 <head>
 <meta charset="UTF-8" />
@@ -6,69 +6,75 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="style.css" />
+
+<!-- โหลด model-viewer ก่อน -->
+<script type="module"
+  src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
+</script>
+
+<style>
+body {
+  font-family: 'Noto Sans Thai', sans-serif;
+  text-align: center;
+}
+
+.ar-section {
+  margin-top: 20px;
+}
+
+.ar-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+</style>
+
 </head>
 
 <body>
 
-<header>
-  <div class="main-title">Rosemary</div>
-  <div class="sub-title">Test3Dcollection (AR)</div>
-</header>
+<h1>Rosemary</h1>
+<h3>Test3Dcollection (AR)</h3>
 
-<!-- Nerd -->
 <div class="ar-section">
-  <div class="head-title">Mingpu</div>
-  <div class="sub-title">just a test model that I download</div>
+  <h2>Mingpu</h2>
+  <p>just a test model that I download</p>
 
   <model-viewer
       id="model1"
-      src="Avatar.glb"
-      ios-src="Avatar.usdz"
+      src="./Avatar.glb"
       ar
       ar-modes="scene-viewer webxr quick-look"
       camera-controls
-      autoplay
       auto-rotate
+      exposure="1.2"
       shadow-intensity="1"
-      shadow-softness="1"
-      environment-image="neutral.hdr"
-      loading="eager"
-      reveal="auto"
       style="width: 100%; height: 400px;">
   </model-viewer>
 
-  <button class="ar-button" onclick="triggerAR('model1')">
+  <br><br>
+
+  <button class="ar-button" onclick="triggerAR()">
     Play AR
   </button>
 </div>
 
 <footer>
-  <div class="footer-link">
+  <p>
     <strong>Facebook:</strong>
     <a href="https://www.facebook.com/RxRosemary3004/" target="_blank">
       facebook.com/RxRosemary3004/
     </a>
-  </div>
+  </p>
 </footer>
 
-<!-- โหลด model-viewer หลังสุด -->
-<script type="module"
-  src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
-</script>
-
-<!-- Script ปุ่ม Play AR -->
 <script>
-  function triggerAR(id) {
-    const viewer = document.getElementById(id);
-
-    if (viewer && viewer.activateAR) {
-      viewer.activateAR().catch((error) => {
-        alert("AR ไม่พร้อมบนอุปกรณ์นี้ หรือถูกบล็อกโดย browser\n(แนะนำให้กดปุ่ม AR บนมุมขวาของโมเดลแทน)");
-        console.warn("activateAR failed:", error);
-      });
-    }
+function triggerAR() {
+  const viewer = document.querySelector("#model1");
+  if (viewer) {
+    viewer.activateAR();
   }
+}
 </script>
 
 </body>

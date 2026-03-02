@@ -2,61 +2,136 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8" />
-<title>Rosemary3004 </title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&display=swap" rel="stylesheet" />
+<title>Rosemary</title>
+ 
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="style.css" />
 </head>
+ 
 <body>
-
+ 
 <header>
-    <img src="logo.png" alt="Mushroom Studio Logo" class="logo" />
-    <div class="main-title">Rosemary</div>
-    <div class="sub-title">Test3Dcollection(AR)</div>
-  </header>
-
-  <!-- Nerd -->
-  <div class="ar-section">
-    <div class="head-title">Mingpu</div>
-    <div class="sub-title">just a test model that I download</div>
-    <model-viewer id="model1"
-      src="Avatar.glb"
-      ios-src="Avatar.usdz"
-      alt="Avatar 3D Model"  
-      ar
-      ar-modes="scene-viewer webxr quick-look"
-      camera-controls
-      autoplay
-      auto-rotate
-      shadow-intensity="1"
-      shadow-softness="1"
-      environment-image="neutral.hdr"
-      loading="eager"
-      reveal="auto"
-      style="width: 100%; height: 400px;">
-    </model-viewer>
-    <button class="ar-button" onclick="triggerAR('model1')">Play AR</button>
-  </div>
-
+<div class="main-title">Rose</div>
+<div class="sub-title">3D Model Collection (AR)</div>
+</header>
+ 
+<!-- CH1 -->
+<section class="ar-section">
+<div class="head-title">Mingpu</div>
+<div class="sub-title">Rosr</div>
+ 
+  <model-viewer
+    id="model1"
+    src="Avatar.glb"
+    ios-src="Avatar.usdz"
+    alt="Avatar 3D Model"
+    ar
+    ar-modes="scene-viewer webxr quick-look"
+    camera-controls
+    auto-rotate
+    shadow-intensity="1"
+    environment-image="neutral"
+    style="width:100%; height:400px;">
+<button slot="ar-button" class="ar-button">
+      เปิด AR
+</button>
+</model-viewer>
+ 
+  <button class="ar-button" onclick="triggerAR('model1')">
+    Play AR
+</button>
+</section>
+ 
+<!-- CH2 -->
+<section class="ar-section">
+<div class="head-title">Mingpu</div>
+<div class="sub-title">EIEI</div>
+ 
+  <model-viewer
+    id="model2"
+    src="IRI.glb"
+    ios-src="IRI.usdz"
+    alt="IRI 3D Model"
+    ar
+    ar-modes="scene-viewer webxr quick-look"
+    camera-controls
+    auto-rotate
+    shadow-intensity="1"
+    environment-image="neutral"
+    style="width:100%; height:400px;">
+<button slot="ar-button" class="ar-button">
+      เปิด AR
+</button>
+</model-viewer>
+ 
+  <button class="ar-button" onclick="triggerAR('model2')">
+    Play AR
+</button>
+</section>
+ 
+  <!-- CH3 -->
+<section class="ar-section">
+<div class="head-title">Mingpu</div>
+<div class="sub-title">EIEI</div>
+ 
+  <model-viewer
+    id="model3"
+    src="ISUIZAS.glb"
+    ios-src="ISUIZAS.usdz"
+    alt="ISUIZAS 3D Model"
+    ar
+    ar-modes="scene-viewer webxr quick-look"
+    camera-controls
+    auto-rotate
+    shadow-intensity="1"
+    environment-image="neutral"
+    style="width:100%; height:400px;">
+<button slot="ar-button" class="ar-button">
+      เปิด AR
+</button>
+</model-viewer>
+ 
+  <button class="ar-button" onclick="triggerAR('model3')">
+    Play AR
+</button>
+</section>
+ 
 <footer>
-<div class="footer-link"><strong>Facebook:</strong> <a href="https://www.facebook.com/RxRosemary3004/" target="_blank">facebook.com/RxRosemary3004/</a></div>
-
-
-<!-- ✅ โหลด model-viewer หลังสุดเพื่อให้โหลดหน้าเว็บเร็วขึ้น -->
-<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-
-<!-- ✅ Script ปุ่ม Play AR พร้อม catch error -->
-<script>
-   function triggerAR(id) {
-     const viewer = document.getElementById(id);
-     if (viewer && viewer.activateAR) {
-       viewer.activateAR().catch((error) => {
-         alert("AR ไม่พร้อมบนอุปกรณ์นี้ หรือถูกบล็อกโดย browser\n(แนะนำให้กดปุ่ม AR บนมุมขวาของโมเดลแทน)");
-         console.warn("activateAR failed:", error);
-       });
-     }
-   }
+<div class="footer-link">
+<strong>Facebook:</strong>
+<a href="https://www.facebook.com/RxRosemary3004/" target="_blank" rel="noopener">
+      facebook.com/RxRosemary3004/
+</a>
+</div>
+</footer>
+ 
+<!-- โหลด model-viewer -->
+<script type="module"
+  src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+  defer>
 </script>
-
+ 
+<script>
+  function triggerAR(id) {
+    const viewer = document.getElementById(id);
+ 
+    if (!viewer) {
+      alert("ไม่พบโมเดล");
+      return;
+    }
+ 
+    if (viewer.canActivateAR) {
+      viewer.activateAR().catch((error) => {
+        alert("AR ไม่พร้อมบนอุปกรณ์นี้ หรือถูกบล็อกโดย Browser\nแนะนำให้ใช้ Chrome บน Android หรือ Safari บน iPhone");
+        console.warn("activateAR failed:", error);
+      });
+    } else {
+      alert("อุปกรณ์นี้ไม่รองรับ AR");
+    }
+  }
+</script>
+ 
 </body>
 </html>

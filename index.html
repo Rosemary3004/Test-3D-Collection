@@ -1,136 +1,164 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Rosemary</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SNOWSU</title>
  
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="style.css" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+ 
+<script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+ 
 </head>
  
 <body>
  
 <header>
-<div class="main-title">Rose</div>
-<div class="sub-title">3D Model Collection (AR)</div>
+<div class="main-title">My 3D Collection</div>
+<div class="sub-title">3D Model (AR)</div>
 </header>
+ 
  
 <!-- CH1 -->
 <section class="ar-section">
-<div class="head-title">Rose</div>
-<div class="sub-title">My Original Character</div>
  
-  <model-viewer
-    id="model1"
-    src="Avatar.glb"
-    ios-src="Avatar.usdz"
-    alt="Avatar 3D Model"
-    ar
-    ar-modes="scene-viewer webxr quick-look"
-    camera-controls
-    auto-rotate
-    shadow-intensity="1"
-    environment-image="neutral"
-    style="width:100%; height:400px;">
+<div class="head-title">Just Dance</div>
+<div class="sub-title">EIEI</div>
+ 
+<model-viewer
+id="model1"
+src="Avatar.glb"
+ios-src="Avatar.usdz"
+ar
+ar-modes="scene-viewer webxr quick-look"
+camera-controls
+auto-rotate
+autoplay
+animation-name="*"
+shadow-intensity="1"
+environment-image="neutral"
+style="width:100%; height:400px;">
+ 
 <button slot="ar-button" class="ar-button">
-      เปิด AR
+เปิด AR
 </button>
+ 
 </model-viewer>
  
-  <button class="ar-button" onclick="triggerAR('model1')">
-    Play AR
+<button class="ar-button" onclick="triggerAR('model1')">
+Play AR
 </button>
+ 
 </section>
+ 
  
 <!-- CH2 -->
 <section class="ar-section">
-<div class="head-title">Room</div>
-<div class="sub-title">testing Room</div>
  
-  <model-viewer
-    id="model2"
-    src="Room.glb"
-    ios-src="Room.usdz"
-    alt="Room 3D Model"
-    ar
-    ar-modes="scene-viewer webxr quick-look"
-    camera-controls
-    auto-rotate
-    shadow-intensity="1"
-    environment-image="neutral"
-    style="width:100%; height:400px;">
+<div class="head-title">Room</div>
+<div class="sub-title">Sleepy</div>
+ 
+<model-viewer
+id="model2"
+src="Room.glb"
+ios-src="Room.usdz"
+ar
+ar-modes="scene-viewer webxr quick-look"
+camera-controls
+auto-rotate
+autoplay
+animation-name="*"
+shadow-intensity="1"
+environment-image="neutral"
+style="width:100%; height:400px;">
+ 
 <button slot="ar-button" class="ar-button">
-      เปิด AR
+เปิด AR
 </button>
+ 
 </model-viewer>
  
-  <button class="ar-button" onclick="triggerAR('model2')">
-    Play AR
+<button class="ar-button" onclick="triggerAR('model2')">
+Play AR
 </button>
+ 
 </section>
  
-  <!-- CH3 -->
+ 
+<!-- CH3 -->
 <section class="ar-section">
+ 
 <div class="head-title">Donut</div>
 <div class="sub-title">Yummy</div>
  
-  <model-viewer
-    id="model3"
-    src="donnut.glb"
-    ios-src="donnut.usdz"
-    alt="donnut 3D Model"
-    ar
-    ar-modes="scene-viewer webxr quick-look"
-    camera-controls
-    auto-rotate
-    shadow-intensity="1"
-    environment-image="neutral"
-    style="width:100%; height:400px;">
+<model-viewer
+id="model3"
+src="donnut.glb"
+ios-src="donnut.usdz"
+ar
+ar-modes="scene-viewer webxr quick-look"
+camera-controls
+auto-rotate
+autoplay
+animation-name="*"
+shadow-intensity="1"
+environment-image="neutral"
+style="width:100%; height:400px;">
+ 
 <button slot="ar-button" class="ar-button">
-      เปิด AR
+เปิด AR
 </button>
+ 
 </model-viewer>
  
-  <button class="ar-button" onclick="triggerAR('model3')">
-    Play AR
+<button class="ar-button" onclick="triggerAR('model3')">
+Play AR
 </button>
+ 
 </section>
  
+ 
 <footer>
+ 
 <div class="footer-link">
 <strong>Facebook:</strong>
-<a href="https://www.facebook.com/RxRosemary3004/" target="_blank" rel="noopener">
-      facebook.com/RxRosemary3004/
+<a href="https://www.facebook.com/SnowDayGrape" target="_blank">
+facebook.com/SnowDayGrape
 </a>
 </div>
+ 
 </footer>
  
-<!-- โหลด model-viewer -->
-<script type="module"
-  src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
-  defer>
-</script>
  
 <script>
-  function triggerAR(id) {
-    const viewer = document.getElementById(id);
  
-    if (!viewer) {
-      alert("ไม่พบโมเดล");
-      return;
-    }
+function triggerAR(id) {
  
-    if (viewer.canActivateAR) {
-      viewer.activateAR().catch((error) => {
-        alert("AR ไม่พร้อมบนอุปกรณ์นี้ หรือถูกบล็อกโดย Browser\nแนะนำให้ใช้ Chrome บน Android หรือ Safari บน iPhone");
-        console.warn("activateAR failed:", error);
-      });
-    } else {
-      alert("อุปกรณ์นี้ไม่รองรับ AR");
-    }
-  }
+const viewer = document.getElementById(id);
+ 
+if (!viewer) {
+alert("ไม่พบโมเดล");
+return;
+}
+ 
+if (viewer.canActivateAR) {
+ 
+viewer.activateAR().catch((error)=>{
+ 
+alert("AR ไม่พร้อมบนอุปกรณ์นี้\nแนะนำให้ใช้ Chrome Android หรือ Safari iPhone");
+console.warn(error);
+ 
+});
+ 
+} else {
+ 
+alert("อุปกรณ์นี้ไม่รองรับ AR");
+ 
+}
+ 
+}
+ 
 </script>
  
 </body>
